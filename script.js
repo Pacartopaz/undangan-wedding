@@ -4,33 +4,28 @@ function startMagicSequence() {
     const envelope = document.querySelector('.envelope-container');
     const overlay = document.getElementById('envelope-overlay');
     
-    // 1. FASE CHARGING (Mengisi Tenaga)
-    // Munculkan lingkaran sihir dan mulai putar
+    // 1. FASE CHARGING
     magicCircle.classList.add('charging');
     envelope.classList.add('charging'); // Amplop bergetar
     
-    // Suara efek sihir bisa ditambahkan di sini jika ada file audio
-    
-    // 2. FASE CLIMAX (Setelah 2 detik charging)
+    // 2. FASE CLIMAX (Setelah 2 detik)
     setTimeout(() => {
-        // Hentikan getaran amplop, buat amplop menghilang
         envelope.classList.remove('charging');
         envelope.classList.add('vanish');
         
-        // Buat lingkaran sihir meledak (Flash terang)
         magicCircle.classList.remove('charging');
         magicCircle.classList.add('flash');
         
-        // 3. FASE SELESAI (Buka Website)
+        // 3. FASE SELESAI
         setTimeout(() => {
             overlay.classList.add('finished'); // Hilangkan overlay
             document.body.classList.remove('locked-scroll'); // Izinkan scroll
-        }, 500); // Waktu flash berlangsung
+        }, 500); 
         
-    }, 2000); // Durasi charging (2 detik)
+    }, 2000); 
 }
 
-// --- COUNTDOWN TIMER (Logic Standar) ---
+// --- COUNTDOWN TIMER ---
 const weddingDate = new Date("April 16, 2030 00:00:00").getTime();
 const timer = setInterval(function() {
     const now = new Date().getTime();
