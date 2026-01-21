@@ -2,7 +2,7 @@
    1. VARIABLES (PALETTE + FONT)
    =========================== */
 :root {
-    /* --- COLOR PALETTE (Dari PDF) --- */
+    /* --- COLOR PALETTE (PDF) --- */
     --col-periwinkle: #B5C6EF;
     --col-khaki: #A89C92;
     --col-bg-cream: #EBE9E1;
@@ -23,10 +23,10 @@ body {
     font-family: var(--font-body);
     font-weight: 400;
     line-height: 1.8;
-    overflow-x: hidden; /* Penting untuk HP agar tidak geser kanan-kiri */
+    overflow-x: hidden;
 }
 
-body.locked-scroll { overflow: hidden; height: 100vh; position: fixed; width: 100%; }
+body.locked-scroll { overflow: hidden; height: 100vh; width: 100%; position: fixed; }
 
 /* ===========================
    2. MAGIC CIRCLE ANIMATIONS
@@ -38,20 +38,21 @@ body.locked-scroll { overflow: hidden; height: 100vh; position: fixed; width: 10
     justify-content: center; align-items: center;
     z-index: 9999;
     transition: opacity 1s ease-out, transform 1s ease-in-out;
-    padding: 20px; /* Jarak aman di HP */
+    padding: 20px;
 }
 
-#envelope-overlay.finished {
-    opacity: 0; pointer-events: none; transform: scale(1.1);
-}
+#envelope-overlay.finished { opacity: 0; pointer-events: none; transform: scale(1.1); }
 
 .magic-circle-wrapper {
     position: absolute;
+    /* POSISI RELATIF TERHADAP AMPLOP */
     top: 50%; left: 50%;
     transform: translate(-50%, -50%);
+    
     width: 0; height: 0;
     display: flex; justify-content: center; align-items: center;
-    z-index: 20;
+    
+    z-index: 8; /* Di belakang segel, di depan amplop */
     pointer-events: none;
     opacity: 0;
     transition: opacity 0.3s;
@@ -59,10 +60,10 @@ body.locked-scroll { overflow: hidden; height: 100vh; position: fixed; width: 10
 
 .magic-svg { width: 100%; height: 100%; overflow: visible; }
 
-/* STATE: CHARGING (PERBAIKAN: Gunakan vw/vmin agar pas di HP) */
+/* STATE: CHARGING */
 .magic-circle-wrapper.charging {
-    width: 90vmin; height: 90vmin; /* 90% dari sisi terpendek layar */
-    max-width: 600px; max-height: 600px; /* Batas max di Laptop */
+    /* UKURAN RELATIF TERHADAP AMPLOP (2.5x lipat) */
+    width: 250%; height: 250%; 
     opacity: 1;
 }
 
@@ -72,7 +73,7 @@ body.locked-scroll { overflow: hidden; height: 100vh; position: fixed; width: 10
 
 /* STATE: FLASH */
 .magic-circle-wrapper.flash {
-    width: 120vmax; height: 120vmax; /* Melebihi layar saat meledak */
+    width: 500%; height: 500%; /* Meledak besar */
     opacity: 0;
     filter: brightness(3) blur(5px);
     transition: width 0.3s ease-out, opacity 0.5s ease-out, filter 0.3s;
@@ -90,13 +91,14 @@ body.locked-scroll { overflow: hidden; height: 100vh; position: fixed; width: 10
    =========================== */
 .envelope-container {
     position: relative; 
-    width: 300px; height: 200px; /* Ukuran standar aman untuk HP kecil */
+    width: 300px; height: 200px; /* Ukuran Pas di HP */
     cursor: pointer;
     box-shadow: 0 20px 50px rgba(81, 91, 137, 0.2);
     transition: transform 0.3s, opacity 0.5s;
     z-index: 10;
 }
 .envelope-container:hover { transform: scale(1.02); }
+
 .envelope-container.charging { animation: shake 0.5s infinite; }
 .envelope-container.vanish { opacity: 0; transform: scale(0.8); }
 
@@ -108,12 +110,10 @@ body.locked-scroll { overflow: hidden; height: 100vh; position: fixed; width: 10
     100% { transform: translate(1px, -1px) rotate(0deg); }
 }
 
-/* Struktur Amplop */
 .envelope-back { position: absolute; width: 100%; height: 100%; background: var(--col-periwinkle); border-radius: 4px; }
 .envelope-front {
     position: absolute; bottom: 0; left: 0; width: 0; height: 0; z-index: 3;
-    /* PERBAIKAN: Menggunakan border relatif terhadap lebar amplop */
-    border-left: 150px solid var(--col-lavender); 
+    border-left: 150px solid var(--col-lavender);
     border-right: 150px solid var(--col-lavender);
     border-top: 100px solid transparent;
     border-bottom: 100px solid var(--col-deep-slate);
@@ -149,11 +149,10 @@ body.locked-scroll { overflow: hidden; height: 100vh; position: fixed; width: 10
 .container { 
     max-width: 1000px; 
     margin: 0 auto; 
-    padding: 0 20px; /* Padding kiri-kanan agar teks tidak nempel layar HP */
+    padding: 0 20px; 
     position: relative; z-index: 10; 
 }
 
-/* Background Decor */
 .background-decor { position: fixed; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
 .particle { position: absolute; border-radius: 50%; background: var(--col-periwinkle); opacity: 0; animation: floatUp 8s infinite linear; }
 .p1 { width: 4px; height: 4px; left: 10%; animation-delay: 0s; }
@@ -167,7 +166,7 @@ body.locked-scroll { overflow: hidden; height: 100vh; position: fixed; width: 10
 /* Navbar */
 .navbar {
     display: flex; justify-content: space-between; align-items: center; 
-    padding: 15px 20px; /* Diperkecil untuk HP */
+    padding: 15px 20px;
     position: sticky; top: 0; z-index: 100;
     background: rgba(235, 233, 225, 0.95); backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(168, 156, 146, 0.2);
@@ -178,17 +177,13 @@ body.locked-scroll { overflow: hidden; height: 100vh; position: fixed; width: 10
 .nav-links a:hover { color: var(--col-deep-slate); }
 
 /* Hero Section */
-.hero-section { 
-    padding: 60px 0; /* Dikurangi biar tidak terlalu kosong di HP */
-    min-height: 100vh; display: flex; align-items: center; 
-}
+.hero-section { padding: 60px 0; min-height: 100vh; display: flex; align-items: center; }
 .hero-layout { display: flex; align-items: center; justify-content: space-between; gap: 40px; }
 .hero-text { flex: 1; z-index: 2; }
 
-/* Font Responsive */
 .hero-text h1 { 
     font-family: var(--font-heading); 
-    font-size: clamp(3rem, 8vw, 5rem); /* Responsive Font: Min 3rem, Max 5rem */
+    font-size: clamp(3rem, 8vw, 5rem); 
     line-height: 1.1; margin: 20px 0; 
     color: var(--col-deep-slate); 
 }
@@ -234,35 +229,27 @@ body.locked-scroll { overflow: hidden; height: 100vh; position: fixed; width: 10
 .btn-magic { padding: 15px; border: none; border-radius: 50px; background: var(--col-deep-slate); color: white; font-family: var(--font-body); font-weight: bold; cursor: pointer; width: 100%; }
 
 /* ===========================
-   5. MOBILE RESPONSIVE (MEDIA QUERIES)
+   5. MOBILE RESPONSIVE
    =========================== */
 @media (max-width: 768px) {
-    /* Navbar HP */
-    .nav-links { display: none; } /* Sembunyikan menu di HP */
+    .nav-links { display: none; } 
     .navbar { justify-content: center; }
 
-    /* Layout Stack (Atas-Bawah) */
     .hero-layout, .zigzag-layout { flex-direction: column; text-align: center; gap: 30px; }
-    
-    /* Gambar di HP */
-    .hero-image { justify-content: center; order: -1; /* Gambar di atas teks */ }
+    .hero-image { justify-content: center; order: -1; }
     .img-arch img { width: 280px; height: 380px; border-top-left-radius: 140px; border-top-right-radius: 140px; }
     .img-rounded { height: 250px; }
 
-    /* Teks di HP */
     .hero-text h1 { margin: 10px 0; }
     .desc { font-size: 1rem; padding: 0 10px; }
     
-    /* Countdown di HP */
     .countdown-grid { gap: 15px; }
     .time-box span { font-size: 2rem; }
 
-    /* Gallery di HP jadi 1 kolom */
     .gallery-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
     .g-item.large { grid-row: auto; height: 300px; }
     .g-item img { height: 250px; }
 
-    /* Amplop di HP (Scale Down sedikit jika perlu) */
+    /* Ukuran Amplop di HP */
     .envelope-container { transform: scale(0.9); }
-    .envelope-container:hover { transform: scale(0.9); }
 }
