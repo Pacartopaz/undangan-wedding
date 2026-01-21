@@ -13,40 +13,40 @@
 
     <div id="envelope-overlay">
         
-        <div class="magic-circle-wrapper">
-            <svg class="magic-svg" viewBox="0 0 200 200">
-                <defs>
-                    <linearGradient id="magicGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" style="stop-color:#B5C6EF;stop-opacity:1" /> <stop offset="100%" style="stop-color:#AFA8BA;stop-opacity:1" /> </linearGradient>
-                    <filter id="glow">
-                        <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
-                        <feMerge>
-                            <feMergeNode in="coloredBlur"/>
-                            <feMergeNode in="SourceGraphic"/>
-                        </feMerge>
-                    </filter>
-                </defs>
-                
-                <g class="ring-outer">
-                    <circle cx="100" cy="100" r="95" fill="none" stroke="url(#magicGrad)" stroke-width="1" />
-                    <circle cx="100" cy="100" r="88" fill="none" stroke="url(#magicGrad)" stroke-width="0.5" stroke-dasharray="5,5" />
-                    <text x="100" y="15" text-anchor="middle" fill="#515B89" font-size="6">✦</text>
-                    <text x="185" y="100" text-anchor="middle" fill="#515B89" font-size="6">✦</text>
-                    <text x="100" y="185" text-anchor="middle" fill="#515B89" font-size="6">✦</text>
-                    <text x="15" y="100" text-anchor="middle" fill="#515B89" font-size="6">✦</text>
-                </g>
-
-                <g class="ring-inner">
-                    <rect x="55" y="55" width="90" height="90" fill="none" stroke="#B5C6EF" stroke-width="0.8" />
-                    <rect x="55" y="55" width="90" height="90" fill="none" stroke="#AFA8BA" stroke-width="0.8" transform="rotate(45 100 100)" />
-                    <circle cx="100" cy="100" r="40" fill="none" stroke="#515B89" stroke-width="0.5" />
-                </g>
-                
-                <circle cx="100" cy="100" r="10" fill="#B5C6EF" class="core-energy" filter="url(#glow)" />
-            </svg>
-        </div>
-
         <div class="envelope-container" onclick="startMagicSequence()">
+            
+            <div class="magic-circle-wrapper">
+                <svg class="magic-svg" viewBox="0 0 200 200">
+                    <defs>
+                        <linearGradient id="magicGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#B5C6EF;stop-opacity:1" /> <stop offset="100%" style="stop-color:#AFA8BA;stop-opacity:1" /> </linearGradient>
+                        <filter id="glow">
+                            <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+                            <feMerge>
+                                <feMergeNode in="coloredBlur"/>
+                                <feMergeNode in="SourceGraphic"/>
+                            </feMerge>
+                        </filter>
+                    </defs>
+                    
+                    <g class="ring-outer">
+                        <circle cx="100" cy="100" r="95" fill="none" stroke="url(#magicGrad)" stroke-width="1" />
+                        <circle cx="100" cy="100" r="88" fill="none" stroke="url(#magicGrad)" stroke-width="0.5" stroke-dasharray="5,5" />
+                        <text x="100" y="15" text-anchor="middle" fill="#515B89" font-size="6">✦</text>
+                        <text x="185" y="100" text-anchor="middle" fill="#515B89" font-size="6">✦</text>
+                        <text x="100" y="185" text-anchor="middle" fill="#515B89" font-size="6">✦</text>
+                        <text x="15" y="100" text-anchor="middle" fill="#515B89" font-size="6">✦</text>
+                    </g>
+    
+                    <g class="ring-inner">
+                        <rect x="55" y="55" width="90" height="90" fill="none" stroke="#B5C6EF" stroke-width="0.8" />
+                        <rect x="55" y="55" width="90" height="90" fill="none" stroke="#AFA8BA" stroke-width="0.8" transform="rotate(45 100 100)" />
+                        <circle cx="100" cy="100" r="40" fill="none" stroke="#515B89" stroke-width="0.5" />
+                    </g>
+                    
+                    <circle cx="100" cy="100" r="10" fill="#B5C6EF" class="core-energy" filter="url(#glow)" />
+                </svg>
+            </div>
             <div class="envelope-back"></div>
             <div class="card-inside">
                 <p>Wedding Invitation</p>
