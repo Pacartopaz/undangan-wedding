@@ -3,131 +3,153 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wedding of Heidar & Inayatul</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Lato:wght@300;400&family=Pinyon+Script&display=swap" rel="stylesheet">
+    <title>The Wedding of Heidar & Inayatul</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Quicksand:wght@300;400;500&family=Pinyon+Script&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="locked-scroll">
 
-    <nav class="navbar">
-        <div class="logo">H & I</div> <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#story">Our Story</a></li>
-            <li><a href="#gallery">Gallery</a></li>
-            <li><a href="#rsvp">RSVP</a></li>
-        </ul>
-    </nav>
-
-    <section id="home" class="hero-section">
-        <div class="container hero-layout">
-            <div class="hero-text">
-                <p class="subtitle">THE WEDDING OF</p>
-                <h1>Heidar &<br>Inayatul</h1>
+    <div id="envelope-overlay">
+        
+        <div class="magic-circle-wrapper">
+            <svg class="magic-svg" viewBox="0 0 200 200">
+                <defs>
+                    <linearGradient id="magicGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#B5C6EF;stop-opacity:1" /> <stop offset="100%" style="stop-color:#AFA8BA;stop-opacity:1" /> </linearGradient>
+                    <filter id="glow">
+                        <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+                        <feMerge>
+                            <feMergeNode in="coloredBlur"/>
+                            <feMergeNode in="SourceGraphic"/>
+                        </feMerge>
+                    </filter>
+                </defs>
                 
-                <p class="desc">
-                    Kami mengundang Anda untuk merayakan pernikahan<br>
-                    <strong>Heidar Janish Mahendra</strong> <br>&<br> <strong>Inayatul Marpu'ah Hakim</strong>
-                </p>
+                <g class="ring-outer">
+                    <circle cx="100" cy="100" r="95" fill="none" stroke="url(#magicGrad)" stroke-width="1" />
+                    <circle cx="100" cy="100" r="88" fill="none" stroke="url(#magicGrad)" stroke-width="0.5" stroke-dasharray="5,5" />
+                    <text x="100" y="15" text-anchor="middle" fill="#515B89" font-size="6">✦</text>
+                    <text x="185" y="100" text-anchor="middle" fill="#515B89" font-size="6">✦</text>
+                    <text x="100" y="185" text-anchor="middle" fill="#515B89" font-size="6">✦</text>
+                    <text x="15" y="100" text-anchor="middle" fill="#515B89" font-size="6">✦</text>
+                </g>
+
+                <g class="ring-inner">
+                    <rect x="55" y="55" width="90" height="90" fill="none" stroke="#B5C6EF" stroke-width="0.8" />
+                    <rect x="55" y="55" width="90" height="90" fill="none" stroke="#AFA8BA" stroke-width="0.8" transform="rotate(45 100 100)" />
+                    <circle cx="100" cy="100" r="40" fill="none" stroke="#515B89" stroke-width="0.5" />
+                </g>
                 
-                <div class="separator"></div>
-                <p class="date">16 . 04 . 2030</p>
+                <circle cx="100" cy="100" r="10" fill="#B5C6EF" class="core-energy" filter="url(#glow)" />
+            </svg>
+        </div>
+
+        <div class="envelope-container" onclick="startMagicSequence()">
+            <div class="envelope-back"></div>
+            <div class="card-inside">
+                <p>Wedding Invitation</p>
+                <h1>H & I</h1>
             </div>
-            <div class="hero-image">
-                <div class="img-arch">
-                    <img src="assets/images/test-wedding-background.jpg" alt="Wedding Couple">
-                </div>
+            <div class="envelope-front"></div>
+            <div class="envelope-flap"></div>
+            <div class="wax-seal">
+                <span>✦</span>
             </div>
         </div>
-    </section>
+        
+        <p class="tap-hint">Ketuk Segel untuk Membuka Sihir</p>
+    </div>
 
-    <section class="countdown-section">
-        <div class="container">
-            <div id="countdown" class="countdown-grid">
-                <div class="time-box">
-                    <span id="days">00</span>
-                    <small>Days</small>
-                </div>
-                <div class="time-box">
-                    <span id="hours">00</span>
-                    <small>Hours</small>
-                </div>
-                <div class="time-box">
-                    <span id="minutes">00</span>
-                    <small>Mins</small>
-                </div>
-                <div class="time-box">
-                    <span id="seconds">00</span>
-                    <small>Secs</small>
-                </div>
-            </div>
+    <main id="main-content">
+        <div class="background-decor">
+            <div class="particle p1"></div><div class="particle p2"></div>
+            <div class="particle p3"></div><div class="particle p4"></div>
+            <div class="petal fl1">❀</div><div class="petal fl2">❀</div>
         </div>
-    </section>
 
-    <section id="story" class="content-section">
-        <div class="container zigzag-layout">
-            <div class="image-box">
-                <img src="assets/images/test-wedding-background(2).jpg" alt="Ceremony" class="img-rounded">
-                <div class="img-overlay">
-                    <img src="assets/images/test-groom.jpg" alt="Detail">
+        <nav class="navbar">
+            <div class="logo">H & I</div>
+            <ul class="nav-links">
+                <li><a href="#home">Journey</a></li>
+                <li><a href="#story">Story</a></li>
+                <li><a href="#gallery">Memory</a></li>
+                <li><a href="#rsvp">RSVP</a></li>
+            </ul>
+        </nav>
+
+        <section id="home" class="hero-section">
+            <div class="container hero-layout">
+                <div class="hero-text">
+                    <p class="subtitle">THE BEGINNING OF JOURNEY</p>
+                    <h1>Heidar &<br>Inayatul</h1>
+                    <div class="magical-divider"></div>
+                    <p class="desc">"Seperti sihir yang mempertemukan dua takdir, kami mengundang Anda ke awal petualangan baru kami."</p>
+                    <p class="date">16 . 04 . 2030</p>
+                </div>
+                <div class="hero-image">
+                    <div class="img-arch">
+                        <img src="assets/images/test-wedding-background.jpg" alt="Couple">
+                    </div>
                 </div>
             </div>
-            <div class="text-box">
-                <p class="tagline">OUR JOURNEY</p>
-                <h2>We Build Your<br>Dream Around You</h2>
-                <p>Cinta bukan hanya tentang saling memandang, tetapi melihat ke arah yang sama. Bergabunglah bersama kami memulai babak baru ini.</p>
-                <button class="btn-gold">Read More</button>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="content-section bg-cream">
-        <div class="container zigzag-layout reverse">
-            <div class="image-box">
-                <img src="assets/images/test-bride.jpg" alt="Reception" class="img-semicircle">
+        <section class="countdown-section">
+            <div class="container">
+                <div class="countdown-grid">
+                    <div class="time-box"><span id="days">00</span><small>Days</small></div>
+                    <div class="time-box"><span id="hours">00</span><small>Hours</small></div>
+                    <div class="time-box"><span id="minutes">00</span><small>Mins</small></div>
+                    <div class="time-box"><span id="seconds">00</span><small>Secs</small></div>
+                </div>
             </div>
-            <div class="text-box">
-                <p class="tagline">THE RECEPTION</p>
-                <h2>A Day To<br>Remember</h2>
-                <p>Nikmati suasana penuh kebahagiaan di hari istimewa kami.</p>
-                <ul class="details-list">
-                    <li><strong>Date:</strong> April 16th, 2030</li>
-                    <li><strong>Time:</strong> 19:00 WIB</li>
-                    <li><strong>Loc:</strong> Grand Ballroom</li>
-                </ul>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="gallery" class="gallery-section">
-        <div class="container">
-            <div class="section-title">
-                <p>MOMENTS</p>
-                <h2>Our Gallery</h2>
+        <section id="story" class="content-section">
+            <div class="container zigzag-layout">
+                <div class="image-box">
+                    <img src="assets/images/test-wedding-background(2).jpg" alt="Story" class="img-rounded">
+                </div>
+                <div class="text-box">
+                    <p class="tagline">The Tale</p>
+                    <h2>A Thousand Years</h2>
+                    <p>Waktu berlalu begitu cepat, namun kenangan bersamamu adalah sihir yang abadi.</p>
+                </div>
             </div>
-            <div class="gallery-grid">
-                <div class="g-item large"><img src="assets/images/test-wedding-background.jpg" alt="1"></div>
-                <div class="g-item"><img src="assets/images/test-groom.jpg" alt="2"></div>
-                <div class="g-item"><img src="assets/images/test-bride.jpg" alt="3"></div>
+        </section>
+
+        <section id="gallery" class="gallery-section">
+            <div class="container">
+                <div class="text-box center-text">
+                    <p class="tagline">Fragments</p>
+                    <h2>Precious Memories</h2>
+                </div>
+                <div class="gallery-grid">
+                    <div class="g-item large"><img src="assets/images/test-wedding-background.jpg" alt="1"></div>
+                    <div class="g-item"><img src="assets/images/test-groom.jpg" alt="2"></div>
+                    <div class="g-item"><img src="assets/images/test-bride.jpg" alt="3"></div>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="rsvp" class="rsvp-section">
-        <div class="container">
-            <h2>RSVP</h2>
-            <p>Please confirm your attendance</p>
-            <form class="rsvp-form">
-                <input type="text" placeholder="Nama Anda">
-                <input type="email" placeholder="Email">
-                <select>
-                    <option>Hadir</option>
-                    <option>Maaf, Tidak Bisa Hadir</option>
-                </select>
-                <button type="submit" class="btn-gold">Kirim Konfirmasi</button>
-            </form>
-        </div>
-    </section>
+        <section id="rsvp" class="rsvp-section">
+            <div class="container">
+                <h2>Join The Adventure</h2>
+                <p>Konfirmasi kehadiran Anda dalam misi ini</p>
+                <form class="rsvp-form">
+                    <input type="text" placeholder="Nama Petualang">
+                    <select>
+                        <option>Hadir</option>
+                        <option>Tidak Hadir</option>
+                    </select>
+                    <button type="button" class="btn-magic">Kirim Jawaban ✨</button>
+                </form>
+            </div>
+        </section>
 
+    </main>
     <script src="script.js"></script>
 </body>
 </html>
